@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>HTML Template</title>
+        <title>Kinepolis - Project</title>
         <meta charset="UTF-8"/>
-        <meta name="description" content="HTML Template"/>
+        <meta name="description" content="Header Template"/>
         <meta name="keywords" content="HTML,CSS, JavaScript"/>
         <meta name="author" content="Nicky Fasoel"/>
-        
         <link href="css/reset.css" rel="stylesheet" type="text/css"/>
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
-        
     </head>
     <body>
         <header>
