@@ -1,6 +1,4 @@
-        <div class="bottomLine">
-            
-        </div>
+        <div class="bottomLine"></div>
         <footer>
             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <%@page import="java.util.Date"%>
