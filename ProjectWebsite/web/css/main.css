@@ -239,6 +239,7 @@ input {
     border-radius: 7px;
     padding: 2px 0 2px 5px;
     border: 2px solid white;
+    box-shadow: 2px 3px 7px #000;
 }
 
 input:focus {
@@ -250,6 +251,8 @@ label {
     font-size: 90%;
     color: lightskyblue;
     display: inline-block;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.8);
+    padding-bottom: 5px;
 }
 
 .button {
@@ -261,12 +264,14 @@ label {
     font-family: 'Titel', serif;
     font-size: 90%;
     background-color: lightskyblue;
+    
 }
 
 .button:hover {
     background-color: #113857;
     border: 1.5px solid gold;
     color: lightskyblue;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.8);
 }
 
 #loginFormat {
