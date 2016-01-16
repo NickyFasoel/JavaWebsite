@@ -16,9 +16,10 @@
         </header>
         <nav>
             <ul>
-                <li class="navItems"><a href="#">Link 1</a></li>
+                <li class="navItems"><a href="index.jsp">Home</a></li>
                 <li class="navItems"><a href="#">Link 2</a></li>
                 <li class="navItems"><a href="#">Link 3</a></li>
-                <li class="navItems"><a href="#">Link 4</a></li>
+                <li class="navItems"><a href="loginPage.jsp">Log in</a></li>
             </ul>
         </nav>
+        <section>
