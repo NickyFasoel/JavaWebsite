@@ -1,19 +1,32 @@
 package Servlets;
 
+import EJBs.FilmEJB;
+import Entities.TblFilm;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LoginServlet extends HttpServlet {
+public class StartServlet extends HttpServlet {
 
-protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @EJB
+    private FilmEJB filmEJB;
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-    }
         
+        List<TblFilm> allFilms = filmEJB.getAllFilms();
+        
+        request.getSession().setAttribute("films", allFilms);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        rd.forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

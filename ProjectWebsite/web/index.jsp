@@ -1,32 +1,32 @@
+<%@page import="java.util.List"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.ForEach"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Entities.TblFilm"%>
+<%@page import="Entities.TblFilm"%>
+<%@page import="Servlets.StartServlet"%>
 <%@ include file="templates/Header.jsp" %>
 
-    
 <div class="center">
     <ul class="itemWrapper">
-        <li class="items">
-            <img class="itemImage" src="images/batmanVSuperman.png" />
-            <a href="" class="itemText">Batman V Superman</a>
-        </li>
-        <li class="items">
-            <img class="itemImage" src="images/gladiator.jpg" />
-            <a href="" class="itemText">Gladiator</a>
-        </li>
-        <li class="items">
-            <img class="itemImage" src="images/gremlins.jpg" />
-            <a href="" class="itemText">Gremlins</a>
-        </li>
-        <li class="items">
-            <img class="itemImage" src="images/poltergeist.jpg" />
-            <a href="" class="itemText">Poltergeist</a>
-        </li>
-        <li class="items">
-            <img class="itemImage" src="images/starwars.jpg" />
-            <a href="" class="itemText">Star Wars: Episode VII</a>
-        </li>
-        <li class="items">
-            <img class="itemImage" src="images/suicideSquad.jpg" />
-            <a href="" class="itemText">Suicide Squad</a>
-        </li>
+
+<% 
+    if (request.getSession().getAttribute("films") == null) {
+        RequestDispatcher rd = request.getRequestDispatcher("StartServlet");
+        rd.forward(request, response);
+    } else { 
+        List<TblFilm> lst = (List<TblFilm>)request.getSession().getAttribute("films");
+        for (TblFilm f : lst) { %>
+            <li class="items"> 
+                <% String temp = f.getImage(); 
+                   String path= temp.substring(0, 1).toLowerCase() + temp.substring(1);
+                %>
+                <img class="itemImage" src="<%= path %>" />
+                <a href="" class="itemText"><%= f.getNaam() %></a>
+            </li>
+        <% }
+    }
+%>
+
     </ul>
 </div>
     

@@ -238,11 +238,11 @@ input {
     margin-bottom: 15px;
     border-radius: 7px;
     padding: 2px 0 2px 5px;
-    border: 2px solid lightskyblue;
+    border: 2px solid white;
 }
 
 input:focus {
-    border: 2px solid gold;
+    border: 2px solid lightskyblue;
 }
 
 label {

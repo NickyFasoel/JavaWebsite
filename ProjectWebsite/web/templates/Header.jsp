@@ -8,6 +8,7 @@
         <meta name="author" content="Nicky Fasoel"/>
         <link href="css/reset.css" rel="stylesheet" type="text/css"/>
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="images/favicon.png" rel="icon" type="image/x-icon"/>
     </head>
     <body>
         <header>
