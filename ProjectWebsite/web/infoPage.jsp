@@ -4,7 +4,6 @@
 
 <%@ include file="templates/Header.jsp" %>
 
-
 <div class="itemWrapper">
     <div id="infoPageWrapper" class="center">
         
@@ -30,8 +29,15 @@
             <%}--%>
         </p>
         
-        <a href="" class="button" id="buyTicketsBtn">Buy Tickets</a>
-        
+        <%  String pagina;
+            if (request.getSession().getAttribute("user") != null ) {
+                pagina = "buyTickets.jsp";
+            } else {
+                request.getSession().setAttribute("errorLogin", "You must login first before buying tickets.");
+                pagina = "loginPage.jsp";
+            }
+        %>
+        <a href=<%= pagina %> class="button" id="buyTicketsBtn">Buy Tickets</a>
         <h2 style="float: left; padding: 8px; clear: both;">Description:</h2>
         <p id="filmBeschrijving">
             <%= film.getBeschrijving() %>

@@ -17,7 +17,8 @@ public class VertoningEJB {
     public List<TblVertoning> getAllVertoningen(long id) {
         List<TblVertoning> lstVertoningen = new ArrayList<>();
        
-        Query q = em.createNativeQuery("SELECT * FROM tbl_vertoning WHERE Film_ID = " + id);
+        // TODO: check dit
+        Query q = em.createNativeQuery("SELECT * FROM tbl_vertoning WHERE Film_ID = " + id, TblVertoning.class);
         lstVertoningen = q.getResultList();
         
         return lstVertoningen;

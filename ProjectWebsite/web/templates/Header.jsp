@@ -18,9 +18,18 @@
         <nav>
             <ul>
                 <li class="navItems"><a href="index.jsp">Home</a></li>
-                <li class="navItems"><a href="#">Link 2</a></li>
-                <li class="navItems"><a href="#">Link 3</a></li>
-                <li class="navItems"><a href="loginPage.jsp">Log in</a></li>
+                <li class="navItems"><a href="#">Trailers</a></li>
+                <li class="navItems"><a href="#">Contact</a></li>
+                <%  String naam, pag;
+                    if (request.getSession().getAttribute("user") != null) {
+                        naam = "Log out"; 
+                        pag = "logOutServlet";
+                    } else { 
+                        naam = "Log in";
+                        pag = "loginPage.jsp";
+                        
+                    } %>
+                <li class="navItems"><a href=<%= pag %>><%= naam %></a></li>
             </ul>
         </nav>
         <section>

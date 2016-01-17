@@ -36,8 +36,6 @@ public class ShowInfoServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("infoPage.jsp");
                 rd.forward(request, response);
             } catch (NumberFormatException | ServletException | IOException ex) {
-                // TODO: message tonen in index als id verkeerd is
-                request.getSession().setAttribute("badID", "The id you've entered is not valid");
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 rd.forward(request, response);
             }
