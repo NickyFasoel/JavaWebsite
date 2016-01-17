@@ -1,10 +1,9 @@
 <%@ include file="templates/Header.jsp" %>
 
 
-<div class="center">
     <div class="itemWrapper" id="loginFormat">
         <div id="loginForm" class="center">
-            <form method="POST" action="LoginServlet">
+            <form method="POST" action="">
                 <label>- Email -</label>
                 <input type="email" name="email" placeholder="E-mail address">
                 <label>- Password -</label>
@@ -13,9 +12,6 @@
             </form>
         </div>
     </div>
-   
-    
-</div>
 
 
 <%@ include file="templates/Footer.jsp" %>

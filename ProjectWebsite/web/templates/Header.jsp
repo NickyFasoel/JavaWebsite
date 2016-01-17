@@ -24,3 +24,4 @@
             </ul>
         </nav>
         <section>
+            <div class="center">

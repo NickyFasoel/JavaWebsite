@@ -1,7 +1,7 @@
 /* -- GLOBALS -- */
 html {
     box-sizing: border-box;
-    background: url(http://www.free-patterns.info/wp-content/uploads/2014/09/dark-carbon-fiber-104178.png);
+    background: url(../images/dark-carbon-fiber.png);
     background-attachment: fixed;
     background-repeat: repeat;
     height: 100%;
@@ -22,7 +22,11 @@ body {
 }
 
 p {
-
+    font-family: 'Titel', serif;
+    font-size: 90%;
+    color: lightskyblue;
+    padding-top: 5px;
+    margin-bottom: 3px;
 }
 
 @font-face {
@@ -43,7 +47,13 @@ H1 {
 }
 
 H2 {
-
+    font-family: 'Titel', serif;
+    font-size: 110%;
+    color: white;
+    padding-top: 10px;
+    margin-right: 10px;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+    display: inline-block;
 }
 
 H3 {
@@ -70,7 +80,7 @@ a:hover {
   color: #FFF;
 }
 
-a:before {
+li > a:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -83,7 +93,7 @@ a:before {
   transition: all 0.3s ease-in-out 0s;
 }
 
-a:hover:before {
+li > a:hover:before {
   visibility: visible;
   transform: scaleX(1);
 }
@@ -264,7 +274,6 @@ label {
     font-family: 'Titel', serif;
     font-size: 90%;
     background-color: lightskyblue;
-    
 }
 
 .button:hover {
@@ -276,6 +285,34 @@ label {
 
 #loginFormat {
     padding: 50px 0 50px 0;
+}
+
+#infoPageWrapper {
+    width: 400px;
+    height: auto;
+    border: 3px double lightskyblue;
+    box-shadow: 2px 3px 7px #000;
+}
+
+#selectedFilm {
+    width: 50%;
+    border-width: 0 1px 1px 0;
+    border-color: lightskyblue;
+    border-style: solid;
+    float: left;
+    box-shadow: 1px 1px 3px #000;
+}
+
+#filmBeschrijving {
+    padding: 0 5px 10px 5px;
+    clear: both;
+}
+
+#buyTicketsBtn {
+    float: left;
+    margin-top: 15px;
+    margin-left: 55px;
+    box-shadow: 1px 1px 3px #000;
 }
 
 /* -- colors -- */

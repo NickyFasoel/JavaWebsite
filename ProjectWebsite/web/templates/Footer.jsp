@@ -1,3 +1,4 @@
+            </div>
         </section>
         <div class="bottomLine"></div>
         <footer>

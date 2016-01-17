@@ -1,7 +1,9 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,6 +32,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "TblFilm.findBySpeeldagen", query = "SELECT t FROM TblFilm t WHERE t.speeldagen = :speeldagen"),
     @NamedQuery(name = "TblFilm.findByPrijs", query = "SELECT t FROM TblFilm t WHERE t.prijs = :prijs")})
 public class TblFilm implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "filmID")
+    private Collection<TblVertoning> tblVertoningCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -216,6 +222,14 @@ public class TblFilm implements Serializable {
     @Override
     public String toString() {
         return getNaam();
+    }
+
+    public Collection<TblVertoning> getTblVertoningCollection() {
+        return tblVertoningCollection;
+    }
+
+    public void setTblVertoningCollection(Collection<TblVertoning> tblVertoningCollection) {
+        this.tblVertoningCollection = tblVertoningCollection;
     }
     
 }

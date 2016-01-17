@@ -4,9 +4,9 @@
 <%@page import="Entities.TblFilm"%>
 <%@page import="Entities.TblFilm"%>
 <%@page import="Servlets.StartServlet"%>
+
 <%@ include file="templates/Header.jsp" %>
 
-<div class="center">
     <ul class="itemWrapper">
 
 <% 
@@ -14,21 +14,19 @@
         RequestDispatcher rd = request.getRequestDispatcher("StartServlet");
         rd.forward(request, response);
     } else { 
-        List<TblFilm> lst = (List<TblFilm>)request.getSession().getAttribute("films");
+        List<TblFilm> lst = (List<TblFilm>)request.getSession().getAttribute("films"); 
         for (TblFilm f : lst) { %>
             <li class="items"> 
                 <% String temp = f.getImage(); 
                    String path= temp.substring(0, 1).toLowerCase() + temp.substring(1);
                 %>
                 <img class="itemImage" src="<%= path %>" />
-                <a href="" class="itemText"><%= f.getNaam() %></a>
+                <a href="ShowInfoServlet?Id=<%= f.getId() %>" class="itemText"><%= f.getNaam() %></a>
             </li>
-        <% }
-    }
-%>
+        <% } 
+    } %>
+
 
     </ul>
-</div>
     
-
 <%@ include file="templates/Footer.jsp" %>
