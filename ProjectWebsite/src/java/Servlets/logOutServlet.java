@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class logOutServlet extends HttpServlet {
+public class LogOutServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -15,6 +15,7 @@ public class logOutServlet extends HttpServlet {
         request.getSession().invalidate();
 
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        
         rd.forward(request, response);
     }
 
