@@ -21,7 +21,9 @@
                    String path= temp.substring(0, 1).toLowerCase() + temp.substring(1);
                 %>
                 <img class="itemImage" src="<%= path %>" />
+                
                 <a href="ShowInfoServlet?Id=<%= f.getId() %>" class="itemText"><%= f.getNaam() %></a>
+                
             </li>
         <% } 
     } %>

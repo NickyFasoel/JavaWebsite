@@ -10,11 +10,11 @@
                 <input type="submit" class="button" value="Log in">
             </form>
         </div>
+        <p><a href="">No account yet?</a></p>
         <p id="errorLogin"><% if (request.getSession().getAttribute("errorLogin") != null) { %>
                     <%= request.getSession().getAttribute("errorLogin") %>
             <%  } %>
         </p>
-        <p><a href="">No account yet?</a></p>
     </div>
 
 <%@ include file="templates/Footer.jsp" %>

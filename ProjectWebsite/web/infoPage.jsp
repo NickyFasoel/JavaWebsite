@@ -38,7 +38,7 @@
             }
         %>
         <a href=<%= pagina %> class="button" id="buyTicketsBtn">Buy Tickets</a>
-        <h2 style="float: left; padding: 8px; clear: both;">Description:</h2>
+        <h2 id="description">Description:</h2>
         <p id="filmBeschrijving">
             <%= film.getBeschrijving() %>
         </p>

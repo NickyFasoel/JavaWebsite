@@ -3,7 +3,6 @@ package Servlets;
 import EJBs.FilmEJB;
 import Entities.TblFilm;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
