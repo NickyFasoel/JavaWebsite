@@ -321,6 +321,8 @@ label {
     text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.8);
     margin-bottom: 0;
     padding-top: 0;
+    margin-left: 55px;
+    margin-right: 55px;
 }
 
 #description {

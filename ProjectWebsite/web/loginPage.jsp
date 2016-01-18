@@ -9,10 +9,10 @@
                 <input type="password" name="pass" placeholder="Password" required>
                 <input type="submit" class="button" value="Log in">
             </form>
+            <p><a href="">No account yet?</a></p>
         </div>
-        <p><a href="">No account yet?</a></p>
         <p id="errorLogin"><% if (request.getSession().getAttribute("errorLogin") != null) { %>
-                    <%= request.getSession().getAttribute("errorLogin") %>
+                <%= request.getSession().getAttribute("errorLogin") %>
             <%  } %>
         </p>
     </div>
