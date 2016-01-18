@@ -9,8 +9,9 @@
                 <input type="password" name="pass" placeholder="Password" required>
                 <input type="submit" class="button" value="Log in">
             </form>
-            <p><a href="">No account yet?</a></p>
+            <p><a href="registerPage.jsp">No account yet?</a></p>
         </div>
+        
         <p id="errorLogin"><% if (request.getSession().getAttribute("errorLogin") != null) { %>
                 <%= request.getSession().getAttribute("errorLogin") %>
             <%  } %>

@@ -29,10 +29,10 @@
             <%}--%>
         </p>
         
-        <%  String pagina;
+        <%  String pagina; // TODO: eerst in variabele steken voor te testen
             if (request.getSession().getAttribute("user") != null ) {
-                pagina = "buyTickets.jsp";
-            } else {
+        pagina = "buyTickets.jsp?Id=" + String.valueOf(film.getId()); %> 
+        <%  } else {
                 request.getSession().setAttribute("errorLogin", "You must login first before buying tickets.");
                 pagina = "loginPage.jsp";
             }

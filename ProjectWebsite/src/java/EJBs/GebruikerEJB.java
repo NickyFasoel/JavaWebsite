@@ -1,12 +1,11 @@
 package EJBs;
 
 import Entities.TblGebruiker;
-import java.util.List;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Stateful
+@Stateless
 public class GebruikerEJB {
 
     @PersistenceContext(unitName = "ProjectWebsitePU")
@@ -16,7 +15,7 @@ public class GebruikerEJB {
         TblGebruiker user = null;
         
         try {
-            user = (TblGebruiker )em.createNativeQuery("SELECT * FROM tbl_gebruiker WHERE Email = '" + email + "' AND Paswoord = '"+ pass + "'", TblGebruiker.class).getSingleResult();
+            user = (TblGebruiker) em.createNativeQuery("SELECT * FROM tbl_gebruiker WHERE Email = '" + email + "' AND Paswoord = '"+ pass + "'", TblGebruiker.class).getSingleResult();
         } catch (Exception e) {
             
         }

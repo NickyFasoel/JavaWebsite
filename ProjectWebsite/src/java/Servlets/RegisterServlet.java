@@ -1,6 +1,6 @@
 package Servlets;
 
-import EJBs.GebruikerEJB;
+import EJBs.RegisterEJB;
 import Entities.TblGebruiker;
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -10,32 +10,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LoginServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     @EJB
-    GebruikerEJB userEJB;
+    RegisterEJB regEJB;
     
-    // TODO: checken op dubbele code zoal request etc
-    
-protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
+        
+        String naam = request.getParameter("naam");
+        String voornaam = request.getParameter("voornaam");
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         
-        TblGebruiker user = userEJB.getGebruiker(email, pass);
-        if (user != null) {
-            request.getSession().setAttribute("user", user.getVoornaam());
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        boolean register = regEJB.register(naam, voornaam, email, pass);
+        if (!register) {
+            request.setAttribute("alreadyExists", "This e-mail is already in use.");
+            RequestDispatcher rd = request.getRequestDispatcher("registerPage.jsp");
             rd.forward(request, response);
-        }   
-        else {
-            request.getSession().setAttribute("errorLogin", "User doesn't exist.");
-            RequestDispatcher rd = request.getRequestDispatcher("loginPage.jsp");
+        } else {
+            request.getSession().setAttribute("user", voornaam);
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     }
-        
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

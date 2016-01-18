@@ -361,6 +361,10 @@ p > a:hover:before {
   visibility: visible;
   transform: scaleX(1);
 }
+
+#registerButton {
+    width: 100px;
+}
 /* -- colors -- */
 /*Hex code gebruiken*/
 
