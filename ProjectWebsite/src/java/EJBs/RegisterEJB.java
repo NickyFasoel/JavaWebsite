@@ -19,8 +19,9 @@ public class RegisterEJB {
         List lst = q.getResultList();
         
         if (lst.isEmpty()) {
-            em.createNativeQuery("INSERT INTO tbl_gebruiker (Naam, Voornaam, Email, Paswoord) "
-                    + "VALUES ('" + naam + "', '" + voornaam + "', '" + email +  "', '" + pass + "')", TblGebruiker.class);
+            
+            em.persist(new TblGebruiker(naam, voornaam, email, pass));
+
             return true;
         } else {
             return false;

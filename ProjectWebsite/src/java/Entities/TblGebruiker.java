@@ -66,6 +66,13 @@ public class TblGebruiker implements Serializable {
         this.email = email;
         this.paswoord = paswoord;
     }
+    
+    public TblGebruiker(String naam, String voornaam, String email, String paswoord) {
+        this.naam = naam;
+        this.voornaam = voornaam;
+        this.email = email;
+        this.paswoord = paswoord;
+    }
 
     public Integer getId() {
         return id;

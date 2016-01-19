@@ -20,7 +20,7 @@ public class RegisterServlet extends HttpServlet {
         
         String naam = request.getParameter("naam");
         String voornaam = request.getParameter("voornaam");
-        String email = request.getParameter("email");
+        String email = request.getParameter("email").toLowerCase();
         String pass = request.getParameter("pass");
         
         boolean register = regEJB.register(naam, voornaam, email, pass);
@@ -29,6 +29,7 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("registerPage.jsp");
             rd.forward(request, response);
         } else {
+            
             request.getSession().setAttribute("user", voornaam);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);

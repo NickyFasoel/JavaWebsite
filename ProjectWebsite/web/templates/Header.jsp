@@ -21,7 +21,7 @@
                 <li class="navItems"><a href="trailers.jsp">Trailers</a></li>
                 <%  String naam, pag;
                     if (request.getSession().getAttribute("user") != null) {
-                        naam = request.getSession().getAttribute("user").toString();
+                        naam = "Welcome, " + request.getSession().getAttribute("user").toString() + "!";
                         pag = "logOutServlet";
                     } else { 
                         naam = "Log in";

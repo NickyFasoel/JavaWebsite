@@ -12,8 +12,15 @@
             <p><a href="registerPage.jsp">No account yet?</a></p>
         </div>
         
-        <p id="errorLogin"><% if (request.getSession().getAttribute("errorLogin") != null) { %>
-                <%= request.getSession().getAttribute("errorLogin") %>
+        <p id="errorLogin">
+            <% Object error = request.getAttribute("errorLogin"); %>
+            <% if (error != null) { %>
+                <%= error.toString() %>
+            <%  } %>
+            <br>
+            <%  Object logFirst = request.getSession().getAttribute("logFirst"); %>
+            <% if (logFirst != null) { %>
+                <%= logFirst.toString() %>
             <%  } %>
         </p>
     </div>

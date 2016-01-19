@@ -27,7 +27,7 @@ public class ShowInfoServlet extends HttpServlet {
                 List<TblFilm> lstFilms = (List<TblFilm>) request.getSession().getAttribute("films");
                 for (TblFilm film : lstFilms) {
                     if (film.getId() == id) {
-                        request.getSession().setAttribute("selectedFilm", film); 
+                        request.setAttribute("selectedFilm", film); 
                     }
                 }
                 List<TblVertoning> allVertoningen = vertEJB.getAllVertoningen(id);

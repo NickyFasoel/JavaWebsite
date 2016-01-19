@@ -13,11 +13,11 @@
             <input type="password" name="pass" placeholder="Password" required>
             <input type="submit" class="button" id="registerButton" value="Register">
         </form>
-        <p id="errorLogin"><% if (request.getSession().getAttribute("alreadyExists") != null) { %>
-                <%= request.getSession().getAttribute("alreadyExists") %>
+    </div>
+        <p id="errorLogin"><% if (request.getAttribute("alreadyExists") != null) { %>
+                <%= request.getAttribute("alreadyExists") %>
             <%  } %>
         </p>
-    </div>
 </div>
 
 <%@ include file="templates/Footer.jsp" %>

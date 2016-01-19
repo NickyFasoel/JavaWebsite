@@ -8,7 +8,7 @@
     <div id="infoPageWrapper" class="center">
         
         <% 
-            TblFilm film = (TblFilm) request.getSession().getAttribute("selectedFilm"); 
+            TblFilm film = (TblFilm) request.getAttribute("selectedFilm"); 
             String temp = film.getImage(); 
             String path= temp.substring(0, 1).toLowerCase() + temp.substring(1);
         %>
@@ -31,9 +31,10 @@
         
         <%  String pagina; // TODO: eerst in variabele steken voor te testen
             if (request.getSession().getAttribute("user") != null ) {
-        pagina = "buyTickets.jsp?Id=" + String.valueOf(film.getId()); %> 
-        <%  } else {
-                request.getSession().setAttribute("errorLogin", "You must login first before buying tickets.");
+                pagina = "buyTickets.jsp?Id=" + String.valueOf(film.getId()); 
+            } else {
+                // Session omdat deze servlet paar keer wordt gebruikt
+                request.getSession().setAttribute("logFirst", "You must login first before buying tickets.");
                 pagina = "loginPage.jsp";
             }
         %>
