@@ -1,7 +1,6 @@
 package Servlets;
 
 import EJBs.RegisterEJB;
-import Entities.TblGebruiker;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -23,13 +22,14 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email").toLowerCase();
         String pass = request.getParameter("pass");
         
+        // TODO: Requestdispatcher minder keer maken en hergebruiken
+        
         boolean register = regEJB.register(naam, voornaam, email, pass);
         if (!register) {
             request.setAttribute("alreadyExists", "This e-mail is already in use.");
             RequestDispatcher rd = request.getRequestDispatcher("registerPage.jsp");
             rd.forward(request, response);
         } else {
-            
             request.getSession().setAttribute("user", voornaam);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);

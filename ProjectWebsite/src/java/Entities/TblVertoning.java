@@ -1,7 +1,9 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,6 +27,11 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "TblVertoning.findBySpeelUur", query = "SELECT t FROM TblVertoning t WHERE t.speelUur = :speelUur"),
     @NamedQuery(name = "TblVertoning.findByZaalID", query = "SELECT t FROM TblVertoning t WHERE t.zaalID = :zaalID")})
 public class TblVertoning implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vertoningID")
+    private Collection<TblKlant> tblKlantCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "voorstellingId")
+    private Collection<TblGekendeklant> tblGekendeklantCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -113,6 +121,22 @@ public class TblVertoning implements Serializable {
     @Override
     public String toString() {
         return "Entities.TblVertoning[ id=" + id + " ]";
+    }
+
+    public Collection<TblKlant> getTblKlantCollection() {
+        return tblKlantCollection;
+    }
+
+    public void setTblKlantCollection(Collection<TblKlant> tblKlantCollection) {
+        this.tblKlantCollection = tblKlantCollection;
+    }
+
+    public Collection<TblGekendeklant> getTblGekendeklantCollection() {
+        return tblGekendeklantCollection;
+    }
+
+    public void setTblGekendeklantCollection(Collection<TblGekendeklant> tblGekendeklantCollection) {
+        this.tblGekendeklantCollection = tblGekendeklantCollection;
     }
     
 }

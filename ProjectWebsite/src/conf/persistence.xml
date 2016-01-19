@@ -5,7 +5,6 @@
     <class>Entities.TblFilm</class>
     <class>Entities.TblGebruiker</class>
     <class>Entities.TblVertoning</class>
-    <class>Entities.TblZaal</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

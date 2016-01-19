@@ -16,6 +16,8 @@ public class StartServlet extends HttpServlet {
     @EJB
     private FilmEJB filmEJB;
     
+    // TODO: check vo request naar object zetten dan if
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         

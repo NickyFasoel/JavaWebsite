@@ -14,7 +14,7 @@
             <input type="submit" class="button" id="registerButton" value="Register">
         </form>
     </div>
-        <p id="errorLogin"><% if (request.getAttribute("alreadyExists") != null) { %>
+        <p id="error"><% if (request.getAttribute("alreadyExists") != null) { %>
                 <%= request.getAttribute("alreadyExists") %>
             <%  } %>
         </p>

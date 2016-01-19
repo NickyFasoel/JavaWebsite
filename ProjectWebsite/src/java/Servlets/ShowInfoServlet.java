@@ -14,8 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ShowInfoServlet extends HttpServlet {
 
-    @EJB
-    private VertoningEJB vertEJB;
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,8 +29,7 @@ public class ShowInfoServlet extends HttpServlet {
                         request.setAttribute("selectedFilm", film); 
                     }
                 }
-                List<TblVertoning> allVertoningen = vertEJB.getAllVertoningen(id);
-                request.getSession().setAttribute("vertoningen", allVertoningen);
+                
                 
                 RequestDispatcher rd = request.getRequestDispatcher("infoPage.jsp");
                 rd.forward(request, response);

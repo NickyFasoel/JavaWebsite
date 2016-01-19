@@ -1,7 +1,9 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -23,6 +26,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "TblGebruiker.findByEmail", query = "SELECT t FROM TblGebruiker t WHERE t.email = :email"),
     @NamedQuery(name = "TblGebruiker.findByPaswoord", query = "SELECT t FROM TblGebruiker t WHERE t.paswoord = :paswoord")})
 public class TblGebruiker implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gebruikerId")
+    private Collection<TblGekendeklant> tblGekendeklantCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -116,7 +122,15 @@ public class TblGebruiker implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.TblGebruiker[ id=" + id + " ]";
+        return getVoornaam();
+    }
+
+    public Collection<TblGekendeklant> getTblGekendeklantCollection() {
+        return tblGekendeklantCollection;
+    }
+
+    public void setTblGekendeklantCollection(Collection<TblGekendeklant> tblGekendeklantCollection) {
+        this.tblGekendeklantCollection = tblGekendeklantCollection;
     }
     
 }

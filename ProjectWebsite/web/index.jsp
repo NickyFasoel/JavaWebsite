@@ -9,8 +9,7 @@
 
     <ul class="itemWrapper">
 
-<%  // zodat de loginfirst boodschap reset anders blijft dit staan
-    request.getSession().setAttribute("logFirst", null);
+<%  
     if (request.getSession().getAttribute("films") == null) {
         RequestDispatcher rd = request.getRequestDispatcher("StartServlet");
         rd.forward(request, response);

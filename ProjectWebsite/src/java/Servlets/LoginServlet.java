@@ -25,7 +25,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
         
         TblGebruiker user = userEJB.getGebruiker(email, pass);
         if (user != null) {
-            request.getSession().setAttribute("user", user.getVoornaam());
+            request.getSession().setAttribute("user", user);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }   

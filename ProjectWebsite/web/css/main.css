@@ -57,7 +57,12 @@ H2 {
 }
 
 H3 {
-
+    font-family: 'Titel', serif;
+    font-size: 90%;
+    color: #FFF;
+    margin-bottom: 7px;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+    display: block;
 }
 
 H4 {
@@ -291,6 +296,8 @@ label {
     height: auto;
     border: 3px double #87CEFA;
     box-shadow: 2px 3px 7px #000;
+    margin-top: 30px; 
+    margin-bottom: 30px;
 }
 
 #selectedFilm {
@@ -314,7 +321,7 @@ label {
     box-shadow: 1px 1px 3px #000;
 }
 
-#errorLogin {
+#error {
     margin-top: 20px;
     font-size: 100%;
     color: #FF0009;
@@ -365,6 +372,65 @@ p > a:hover:before {
 #registerButton {
     width: 100px;
 }
+
+.ddl {
+    width: 90px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    padding: 2px 0 2px 5px;
+    border: 2px solid #FFF;
+    box-shadow: 2px 3px 7px #000;
+    cursor: pointer;
+}
+.ddl:focus {
+    border: 2px solid #87CEFA;
+}
+
+.marginbot25 {
+    margin-bottom: 25px;
+}
+
+.marginbot15 {
+    margin-bottom: 15px;
+}
+
+.margintop10 {
+    margin-top: 10px;
+}
+
+.margintop25 {
+    margin-top: 25px;
+}
+
+#nr {
+    width: 90px;
+}
+
+#underline {
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.gold {
+    color: #ffd700;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.hr {
+    border-top: 3px double #87CEFA;
+    margin: 10px 0;
+}
+
+#free {
+    height: auto;
+    width: 50%;
+}
+
 /* -- colors -- */
 /*Hex code gebruiken*/
 

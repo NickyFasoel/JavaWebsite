@@ -23,20 +23,13 @@
         <h2>Hours:</h2><br>
         <p>
             <%= film.getSpeeluren() %>       
-            <%-- List<TblVertoning> vert = (List<TblVertoning>) request.getSession().getAttribute("vertoningen");
-                for (TblVertoning v : vert) { %>
-                <%= v.getSpeelUur() %>
-            <%}--%>
         </p>
         
         <%  String pagina; // TODO: eerst in variabele steken voor te testen
             if (request.getSession().getAttribute("user") != null ) {
-                pagina = "buyTickets.jsp?Id=" + String.valueOf(film.getId()); 
+                pagina = "BuyTicketsServlet?Id=" + String.valueOf(film.getId()); 
             } else {
-                // Session omdat deze servlet paar keer wordt gebruikt
-                request.getSession().setAttribute("logFirst", "You must login first before buying tickets.");
-                // TODO: servlets geebruiken ipv jsp en dan redirecte
-                pagina = "loginPage.jsp";
+                pagina = "BuyTicketsServlet";
             }
         %>
         <a href=<%= pagina %> class="button" id="buyTicketsBtn">Buy Tickets</a>
@@ -47,6 +40,5 @@
         
     </div>
 </div>
-
 
 <%@ include file="templates/Footer.jsp" %>
