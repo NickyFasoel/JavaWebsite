@@ -35,6 +35,7 @@
             } else {
                 // Session omdat deze servlet paar keer wordt gebruikt
                 request.getSession().setAttribute("logFirst", "You must login first before buying tickets.");
+                // TODO: servlets geebruiken ipv jsp en dan redirecte
                 pagina = "loginPage.jsp";
             }
         %>
