@@ -18,7 +18,7 @@
         <nav>
             <ul>
                 <li class="navItems"><a href="index.jsp">Home</a></li>
-                <li class="navItems"><a href="trailers.jsp">Trailers</a></li>
+                <li class="navItems"><a href="TrailerServlet">Trailers</a></li>
                 <%  String naam, pag;
                     if (request.getSession().getAttribute("user") != null) {
                         naam = "Welcome, " + request.getSession().getAttribute("user").toString() + "!";

@@ -30,7 +30,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             rd.forward(request, response);
         }   
         else {
-            request.setAttribute("errorLogin", "User doesn't exist.");
+            request.setAttribute("errorLogin", "User / Password doesn't exist.");
             RequestDispatcher rd = request.getRequestDispatcher("loginPage.jsp");
             rd.forward(request, response);
         }

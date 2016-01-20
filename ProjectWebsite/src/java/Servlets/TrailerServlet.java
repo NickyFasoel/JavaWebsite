@@ -1,8 +1,7 @@
 package Servlets;
 
-import EJBs.VertoningEJB;
-import Entities.TblFilm;
-import Entities.TblVertoning;
+import EJBs.TrailerEJB;
+import Entities.TblTrailer;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -12,30 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ShowInfoServlet extends HttpServlet {
+public class TrailerServlet extends HttpServlet {
 
-    
+    @EJB
+    TrailerEJB traEJB;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String tempId = request.getParameter("Id");
-        if (tempId != null) {
-            try {
-                long id = Long.parseLong(tempId);
-                List<TblFilm> lstFilms = (List<TblFilm>) request.getSession().getAttribute("films");
-                for (TblFilm film : lstFilms) {
-                    if (film.getId() == id) {
-                        request.setAttribute("selectedFilm", film); 
-                    }
-                }
-                RequestDispatcher rd = request.getRequestDispatcher("infoPage.jsp");
-                rd.forward(request, response);
-            } catch (NumberFormatException | ServletException | IOException ex) {
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                rd.forward(request, response);
-            }
-        }
+        List<TblTrailer> lstTrailers = traEJB.getTrailers();
+        
+        request.getSession().setAttribute("trailers", lstTrailers);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("trailers.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

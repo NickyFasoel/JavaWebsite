@@ -71,9 +71,10 @@ public class PayServlet extends HttpServlet {
 
             if (vert != null) {
                 payEJB.pay(user, vert, Integer.parseInt(tickets));
-
-                rd = request.getRequestDispatcher("paidPage.jsp");
-                rd.forward(request, response);
+                /**
+                 *  anders kan refresh opnieuw tickets "kopen"
+                 */
+                response.sendRedirect("paidPage.jsp");
             } else {
                 request.setAttribute("voorstellingError", "This show is full.");
                 rd = request.getRequestDispatcher("buyTickets.jsp");

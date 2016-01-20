@@ -11,31 +11,30 @@ public class BuyTicketsServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+            
         String id = request.getParameter("Id");
         if (id == null) {
             request.setAttribute("logFirst", "You must login first before buying tickets.");
             RequestDispatcher rd = request.getRequestDispatcher("loginPage.jsp");
             rd.forward(request, response);
-            
+
         } else if (id != null){
             long longId = 0;
-            
+
             try {
                 longId = Long.parseLong(id);
             } catch(Exception e) {
                 RequestDispatcher rd = request.getRequestDispatcher("loginPage.jsp");
                 rd.forward(request, response);
             }
-            
             if (longId != 0) {
                 request.setAttribute("id", longId);
                 RequestDispatcher rd = request.getRequestDispatcher("buyTickets.jsp");
                 rd.forward(request, response);
             } 
-            
         }
         
+         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
