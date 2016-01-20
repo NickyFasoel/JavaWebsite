@@ -8,7 +8,7 @@
         <% 
             Object tempLst = request.getSession().getAttribute("trailers");
             /**
-             *  als de session verlopen redirect ik naar de servlet om terug data op te halen
+             *  als de session verlopen is redirect ik naar de servlet om terug data op te halen
              */
             if (tempLst == null) {
                 response.sendRedirect("TrailerServlet.jsp");

@@ -1,11 +1,8 @@
 package Servlets;
 
-import EJBs.VertoningEJB;
 import Entities.TblFilm;
-import Entities.TblVertoning;
 import java.io.IOException;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ShowInfoServlet extends HttpServlet {
 
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
