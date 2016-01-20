@@ -30,8 +30,7 @@ public class RegisterServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("registerPage.jsp");
             rd.forward(request, response);
         } else {
-            request.getSession().setAttribute("user", voornaam);
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("loginPage.jsp");
             rd.forward(request, response);
         }
     }
