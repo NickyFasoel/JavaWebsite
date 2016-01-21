@@ -6,7 +6,7 @@
 
 <div class="itemWrapper">
     <div id="infoPageWrapper" class="center">
-        
+
         <%  /**
               *  in object gestoken zodat ik er niets moet op uitvoeren anders nullexception
               *  en zo kan ik kijken of het null is ofniet zonder effectief het object te gebruiken
@@ -49,7 +49,6 @@
                     <option value="<%= uur %>"><%= uur %></option>
         <%      } 
         %>
-
             </select>
             <h3 class="margintop10">How many tickets?</h3>
             <input type="number" min="1" max="9" name="tickets" placeholder="Amount" id="nr" class="textCenter" required>
@@ -69,5 +68,3 @@
 </div>
 
 <%@ include file="templates/Footer.jsp" %>
-
-            

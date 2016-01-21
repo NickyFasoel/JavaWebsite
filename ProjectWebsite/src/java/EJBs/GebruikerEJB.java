@@ -17,6 +17,11 @@ public class GebruikerEJB {
         try {
             user = (TblGebruiker) em.createNativeQuery("SELECT * FROM tbl_gebruiker WHERE Email = '" + email + "' AND Paswoord = '"+ pass + "'", TblGebruiker.class).getSingleResult();
         } catch (Exception e) {
+            /**
+             *  SingleResult returns een exception als hij leeg is 
+             *  hierdoor kon ik deze opvangen indien leeg return ik de user as null
+             *  en hierop controleerd mijn servlet voor de gebruiker in te loggen of niet
+             */ 
             
         }
         

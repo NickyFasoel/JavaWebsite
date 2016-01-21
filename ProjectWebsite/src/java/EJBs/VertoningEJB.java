@@ -3,10 +3,9 @@ package EJBs;
 import Entities.TblVertoning;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -77,8 +76,23 @@ public class VertoningEJB {
         Date currentFilmStartTime = null;
         SimpleDateFormat sdf = new SimpleDateFormat("HH:MM");
         currentFilmStartTime = sdf.parse(speeluur);
-        Date test = sdf.parse(sdf.format(new Date()));
         
-        return currentFilmStartTime.compareTo(test);
+        int hour = LocalDateTime.now().getHour();
+        int minute = LocalDateTime.now().getMinute();
+        
+        String replace = speeluur.replace(':', ' ');
+        
+        String[] sp = replace.split(" ");
+        
+        int testHour = Integer.parseInt(sp[0]);
+        int testMinutes = Integer.parseInt(sp[1]);
+        
+        if (hour > testHour) {
+            return 1;
+        } else if (hour == testHour && ) {
+            
+        }
+        
+        // TODO: fix dit
     }
 }
