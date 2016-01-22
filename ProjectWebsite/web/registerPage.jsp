@@ -14,8 +14,11 @@
             <input type="submit" class="button" id="registerButton" value="Register">
         </form>
     </div>
-        <p id="error"><% if (request.getAttribute("alreadyExists") != null) { %>
-                <%= request.getAttribute("alreadyExists") %>
+        <p id="error">
+            <%  // als de email al bestaat => errorMessage hier
+                Object objError = request.getAttribute("alreadyExists");
+                if (objError != null) { %>
+                <%= objError.toString() %>
             <%  } %>
         </p>
 </div>

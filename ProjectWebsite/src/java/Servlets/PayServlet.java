@@ -37,23 +37,28 @@ public class PayServlet extends HttpServlet {
         
         RequestDispatcher rd;
         if (new SimpleDateFormat("EEEE", Locale.UK).format(new Date()).equals(speeldag)) {
-            int started = 5;
-            try {
+            // Moest initialized zijn dus: 42 is the answer to everything
+            int started = 42;
+            try { // kijken of deze al begonnen is gebruikt compareTo(date)
+                  // returned -1 = verleden tijd
+                  // 0 als het uur identiek is dus geen verschil in tijd
+                  // 1 als het in de toekomst ligt
                 started = vertEJB.isStarted(speeluur);
             } catch (ParseException ex) {
                 Logger.getLogger(PayServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            if (started != 5 && started < 0) {
+                // show is al begonnen
+            if (started < 0) {
                 request.setAttribute("voorstellingError", "This show is already done/started.");
                 rd = request.getRequestDispatcher("buyTickets.jsp");
                 rd.forward(request, response);
-            } else if (started != 5 && started >= 0){
+                
+                // show moet nog beginnen of is nu pas begonnen
+            } else if (started >= 0) {
                 TblVertoning vert = vertEJB.isRoom(id, speeluur, speeldag);
-
-                TblGebruiker user = (TblGebruiker) request.getSession().getAttribute("user");
-
                 if (vert != null) {
+                    // ingelogde gebruiker persisten
+                    TblGebruiker user = (TblGebruiker) request.getSession().getAttribute("user");
                     payEJB.pay(user, vert, Integer.parseInt(tickets));
 
                     rd = request.getRequestDispatcher("paidPage.jsp");
@@ -66,14 +71,22 @@ public class PayServlet extends HttpServlet {
             }
         } else {
             TblVertoning vert = vertEJB.isRoom(id, speeluur, speeldag);
-
-            TblGebruiker user = (TblGebruiker) request.getSession().getAttribute("user");
-
             if (vert != null) {
+                TblGebruiker user = (TblGebruiker) request.getSession().getAttribute("user");
+                
+                if (user == null) {
+                    response.sendRedirect("index.jsp");
+                    return;
+                }
                 payEJB.pay(user, vert, Integer.parseInt(tickets));
                 /**
-                 *  anders kan refresh opnieuw tickets "kopen"
+                 *  invalidate en sendredirect:
+                 *  anders kan refresh opnieuw tickets "kopen" 
+                 *  en kan de controle user == null voorkomen van nogeens tickets te kopen
+                 *  normaal zou er een betaalpagina vd bank tussen zitten 
+                 *  en kan dit zoiezo niet of minder tenminste minder kwaad omdat ze dan toch moeten betalen
                  */
+                request.getSession().invalidate();
                 response.sendRedirect("paidPage.jsp");
             } else {
                 request.setAttribute("voorstellingError", "This show is full.");
@@ -81,7 +94,6 @@ public class PayServlet extends HttpServlet {
                 rd.forward(request, response);
             }
         }
-  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -3,7 +3,6 @@ package EJBs;
 import Entities.TblVertoning;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,24 +21,25 @@ public class VertoningEJB {
         TblVertoning vert = null;
         
         Query q = em.createNativeQuery("SELECT * FROM tbl_vertoning WHERE Film_ID = " + id + " AND SpeelDag = '" + speeldag + "' AND SpeelUur = '" + speeluur + "'", TblVertoning.class);
+        
+        // kan niet leeg of null zijn omdat de argumenten etc 
+        // uit de geselecteerde vertoning/film komen en deze komen uit de database
+        vert = (TblVertoning) q.getSingleResult();
+        int id1 = 0;
+        id1 = vert.getId();
+        int zaalID = vert.getZaalID();
 
-        if (q != null) {
-            vert = (TblVertoning) q.getSingleResult();
-            int id1= 0;
-            id1 = vert.getId();
-            int zaalID = vert.getZaalID();
-            
-            int bezettePlaatsen = 0;
-            bezettePlaatsen = getTakenSeats(id1);
-            
-            int zaalPlaatsen = 0;
-            zaalPlaatsen = getMaxSeats(zaalID, zaalPlaatsen);
-            
-            if (zaalPlaatsen - 9 >= bezettePlaatsen) {
-                return vert;
-            } else {
-                vert = null;
-            }
+        int bezettePlaatsen = 0;
+        bezettePlaatsen = getTakenSeats(id1);
+
+        int zaalPlaatsen = 0;
+        zaalPlaatsen = getMaxSeats(zaalID, zaalPlaatsen);
+        
+        if (zaalPlaatsen - 9 >= bezettePlaatsen) {
+            return vert;
+        } else {
+            // vertoning is vol
+            vert = null;
         }
         
         return vert;
@@ -74,25 +74,11 @@ public class VertoningEJB {
     public int isStarted (String speeluur) throws ParseException {
         
         Date currentFilmStartTime = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:MM");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         currentFilmStartTime = sdf.parse(speeluur);
+        Date test = sdf.parse(sdf.format(new Date()));
         
-        int hour = LocalDateTime.now().getHour();
-        int minute = LocalDateTime.now().getMinute();
-        
-        String replace = speeluur.replace(':', ' ');
-        
-        String[] sp = replace.split(" ");
-        
-        int testHour = Integer.parseInt(sp[0]);
-        int testMinutes = Integer.parseInt(sp[1]);
-        
-        if (hour > testHour) {
-            return 1;
-        } else if (hour == testHour && ) {
-            
-        }
-        
-        // TODO: fix dit
+        return currentFilmStartTime.compareTo(test);
     }
+    
 }

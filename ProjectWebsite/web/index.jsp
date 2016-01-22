@@ -9,21 +9,25 @@
 
     <ul class="itemWrapper">
 
-<%  
-    if (request.getSession().getAttribute("films") == null) {
+<%  // indien dat de sessie bvb verlopen is haal ik de films terug op
+    // als ze nog in session zitten gebruik ik ze gwn terug
+    Object objFilms = request.getSession().getAttribute("films");
+    if (objFilms == null) {
         RequestDispatcher rd = request.getRequestDispatcher("StartServlet");
         rd.forward(request, response);
     } else { 
-        List<TblFilm> lst = (List<TblFilm>)request.getSession().getAttribute("films"); 
+        List<TblFilm> lst = (List<TblFilm>) objFilms; 
         for (TblFilm f : lst) { %>
             <li class="items"> 
-                <% String temp = f.getImage(); 
-                   String path= temp.substring(0, 1).toLowerCase() + temp.substring(1);
+                <% // Hier moet ik het pad aanpassen Images => images, hoofdletter gevoelig
+                   // Desktop is het met I en hier i => refactor hielp niet (naam veranderen)
+                   // alle items (films) haal ik het pad en steek dit in een variable, 
+                   // ditto met de id om deze door te geven als param
+                   String temp = f.getImage(); 
+                   String path = temp.substring(0, 1).toLowerCase() + temp.substring(1);
                 %>
                 <img class="itemImage" src="<%= path %>" />
-                
                 <a href="ShowInfoServlet?Id=<%= f.getId() %>" class="itemText"><%= f.getNaam() %></a>
-                
             </li>
         <% } 
     } %>

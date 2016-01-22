@@ -8,8 +8,8 @@
     <div id="infoPageWrapper" class="center">
 
         <%  /**
-              *  in object gestoken zodat ik er niets moet op uitvoeren anders nullexception
-              *  en zo kan ik kijken of het null is ofniet zonder effectief het object te gebruiken
+              *  deze lange codeblock vult de comboboxes en eventueel onderbreekt
+              *  als de id niet klopt
               */
             Object tempObj = request.getAttribute("id");
             if (tempObj != null) {
@@ -23,6 +23,7 @@
                     selectedFilm = film; 
                     String tmp = selectedFilm.getImage(); 
                     String path= tmp.substring(0, 1).toLowerCase() + tmp.substring(1);
+                    // de form in een foreach kan geen kwaad hier omdat de id unique is in database
         %>
                     <img class="itemImage" src="<%= path %>">
                     <h2 class="marginbot25 gold" id="underline"><%= selectedFilm.getNaam() %></h2>
@@ -36,6 +37,12 @@
                         <option value="<%= dag %>"><%= dag %></option>
         <%          }
                 }
+            }
+                // id is niet bestaande in de film list
+            if (selectedFilm == null) {
+                response.sendRedirect("index.jsp");
+                // anders voert hij de code vanonder nog uit en crashed
+                return;
             }
         %>
             </select>
@@ -58,8 +65,7 @@
         </form>
     </div>
     <p id="error">
-        <%  Object error = null;
-            error = request.getAttribute("voorstellingError");
+        <%  Object error = request.getAttribute("voorstellingError");
             if (error != null) { %>
                 <%= error.toString() %> 
         <%  }

@@ -22,8 +22,7 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email").toLowerCase();
         String pass = request.getParameter("pass");
         
-        // TODO: Requestdispatcher minder keer maken en hergebruiken
-        
+        // kijkt of de email (unieke waarde) al in de db bestaat (registreerbaar)
         boolean register = regEJB.register(naam, voornaam, email, pass);
         if (!register) {
             request.setAttribute("alreadyExists", "This e-mail is already in use.");

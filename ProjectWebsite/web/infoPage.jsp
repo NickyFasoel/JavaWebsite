@@ -7,10 +7,11 @@
 <div class="itemWrapper">
     <div id="infoPageWrapper" class="center">
         
-        <% 
+        <%  // attr ophalen indien geen attr => opgevangen door catch in vorige page
             TblFilm film = (TblFilm) request.getAttribute("selectedFilm"); 
             String temp = film.getImage(); 
-            String path= temp.substring(0, 1).toLowerCase() + temp.substring(1);
+            // path weer aanpassen om te vinden refactor hielp niet (naam veranderen)
+            String path = temp.substring(0, 1).toLowerCase() + temp.substring(1);
         %>
 
         <img id="selectedFilm" src="<%= path %>">
@@ -25,8 +26,8 @@
             <%= film.getSpeeluren() %>       
         </p>
         
-        <%  String pagina; // TODO: eerst in variabele steken voor te testen
-            if (request.getSession().getAttribute("user") != null ) {
+        <%  String pagina;
+            if (request.getSession().getAttribute("user") != null) {
                 pagina = "BuyTicketsServlet?Id=" + String.valueOf(film.getId()); 
             } else {
                 pagina = "BuyTicketsServlet";

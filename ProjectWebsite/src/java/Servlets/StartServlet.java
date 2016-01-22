@@ -21,6 +21,8 @@ public class StartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        // alle films ophalen en dan in Session steken omdat ik die later nog nodig 
+        // heb om de info te tonen van de selected film
         List<TblFilm> allFilms = filmEJB.getAllFilms();
         
         request.getSession().setAttribute("films", allFilms);

@@ -8,7 +8,8 @@
         <% 
             Object tempLst = request.getSession().getAttribute("trailers");
             /**
-             *  als de session verlopen is redirect ik naar de servlet om terug data op te halen
+             *  als de session verlopen is redirect ik naar de servlet om terug de data op te halen
+             *  anders blijf ik op deze pagina met parameter id "spelen" zolang mogelijk
              */
             if (tempLst == null) {
                 response.sendRedirect("TrailerServlet.jsp");
@@ -18,17 +19,23 @@
                 String title = null;
                 Object tempId = request.getParameter("id");
                 if (tempId == null) {
+                    // start trailer en naam => home page ish
+                    // ook als de url string veranderd
                     path = lst.get(0).getUrl();
                     title = lst.get(0).getNaam();
                 } else if (tempId != null) {
                     for (TblTrailer item : lst) {
                         if (String.valueOf(item.getId()).equals(tempId.toString())) {
+                            // veranderd het path en title afhankelijk van de param id
                             path = item.getUrl();
                             title = item.getNaam();
-                        }
+                        } 
                     }
-                } else {
-                    response.sendRedirect("infoPage.jsp");
+                        // id = niet te vinden => return om errors te vermijden en redirect
+                    if (path == null && title == null) {
+                        response.sendRedirect("trailers.jsp"); 
+                        return;
+                    }
                 }
         %> 
         <h2 id="displBlock"><%= title %></h2>
