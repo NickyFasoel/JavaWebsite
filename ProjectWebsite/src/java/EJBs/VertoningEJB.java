@@ -35,7 +35,7 @@ public class VertoningEJB {
         int zaalPlaatsen = 0;
         zaalPlaatsen = getMaxSeats(zaalID, zaalPlaatsen);
         
-        // 
+        // Controleren van aantal tickets en inclusief het aantal ingegeven tickets
         if (zaalPlaatsen >= bezettePlaatsen + Integer.parseInt(tickets)) {
             return vert;
         } else {
@@ -74,7 +74,7 @@ public class VertoningEJB {
     
     public int isStarted (String speeluur) throws ParseException {
         
-        Date currentFilmStartTime = null;
+        Date currentFilmStartTime;
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         currentFilmStartTime = sdf.parse(speeluur);
         Date test = sdf.parse(sdf.format(new Date()));
