@@ -16,7 +16,7 @@ public class VertoningEJB {
     @PersistenceContext(unitName = "ProjectWebsitePU")
     private EntityManager em;
     
-    public TblVertoning isRoom(long id, String speeluur, String speeldag) {
+    public TblVertoning isRoom(String tickets, long id, String speeluur, String speeldag) {
         
         TblVertoning vert = null;
         
@@ -35,7 +35,8 @@ public class VertoningEJB {
         int zaalPlaatsen = 0;
         zaalPlaatsen = getMaxSeats(zaalID, zaalPlaatsen);
         
-        if (zaalPlaatsen - 9 >= bezettePlaatsen) {
+        // 
+        if (zaalPlaatsen >= bezettePlaatsen + Integer.parseInt(tickets)) {
             return vert;
         } else {
             // vertoning is vol

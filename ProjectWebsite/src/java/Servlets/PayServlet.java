@@ -55,7 +55,7 @@ public class PayServlet extends HttpServlet {
                 
                 // show moet nog beginnen of is nu pas begonnen
             } else if (started >= 0) {
-                TblVertoning vert = vertEJB.isRoom(id, speeluur, speeldag);
+                TblVertoning vert = vertEJB.isRoom(tickets, id, speeluur, speeldag);
                 if (vert != null) {
                     // ingelogde gebruiker persisten
                     TblGebruiker user = (TblGebruiker) request.getSession().getAttribute("user");
@@ -70,7 +70,7 @@ public class PayServlet extends HttpServlet {
                 }
             }
         } else {
-            TblVertoning vert = vertEJB.isRoom(id, speeluur, speeldag);
+            TblVertoning vert = vertEJB.isRoom(tickets, id, speeluur, speeldag);
             if (vert != null) {
                 TblGebruiker user = (TblGebruiker) request.getSession().getAttribute("user");
                 

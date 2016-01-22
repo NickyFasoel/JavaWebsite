@@ -21,7 +21,7 @@
             <li class="items"> 
                 <% // Hier moet ik het pad aanpassen Images => images, hoofdletter gevoelig
                    // Desktop is het met I en hier i => refactor hielp niet (naam veranderen)
-                   // alle items (films) haal ik het pad en steek dit in een variable, 
+                   // alle items (films) haal ik het pad van en steek dit in een variable, 
                    // ditto met de id om deze door te geven als param
                    String temp = f.getImage(); 
                    String path = temp.substring(0, 1).toLowerCase() + temp.substring(1);

@@ -23,18 +23,16 @@ public class BuyTicketsServlet extends HttpServlet {
             
             // als de id ontbreekt en er is een user ingelogd => indexpage
         } else if (id == null && objUser != null) {
-            RequestDispatcher rd = request.getRequestDispatcher("indexPage.jsp");
-            rd.forward(request, response);
+            response.sendRedirect("index.jsp");
             
             // dubbele veilgheid anders kon ik ticket kopen door param mee te geven
         } else if (id != null && objUser != null){
             long longId = 0;
             try {
-                // als de id geen getal is forward
+                // als de id geen getal is redirect
                 longId = Long.parseLong(id);
             } catch(Exception e) {
-                RequestDispatcher rd = request.getRequestDispatcher("loginPage.jsp");
-                rd.forward(request, response);
+                response.sendRedirect("index.jsp");
             }   
                 // id = dus geparsed steek ik deze in attr vo buytickets page
             if (longId != 0) {
