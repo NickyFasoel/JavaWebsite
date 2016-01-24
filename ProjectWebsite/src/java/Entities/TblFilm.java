@@ -200,13 +200,6 @@ public class TblFilm implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
     public String toString() {
         return getNaam();
     }

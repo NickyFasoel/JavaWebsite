@@ -74,17 +74,5 @@ public class TblZaal implements Serializable {
     public void setPlaatsen(String plaatsen) {
         this.plaatsen = plaatsen;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Entities.TblZaal[ id=" + id + " ]";
-    }
-    
+ 
 }

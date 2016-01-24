@@ -99,17 +99,5 @@ public class TblGekendeklant implements Serializable {
     public void setGebruikerId(TblGebruiker gebruikerId) {
         this.gebruikerId = gebruikerId;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Entities.TblGekendeklant[ id=" + id + " ]";
-    }
-    
+ 
 }

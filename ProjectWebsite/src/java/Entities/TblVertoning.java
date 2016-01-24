@@ -111,18 +111,6 @@ public class TblVertoning implements Serializable {
         this.filmID = filmID;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Entities.TblVertoning[ id=" + id + " ]";
-    }
-
     public Collection<TblKlant> getTblKlantCollection() {
         return tblKlantCollection;
     }
